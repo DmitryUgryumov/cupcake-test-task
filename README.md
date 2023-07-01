@@ -1,3 +1,5 @@
+## Before starting the launch, you need to create an .env file and add the "REACT_APP_API_URL" variable there (example in the .env.example file)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
