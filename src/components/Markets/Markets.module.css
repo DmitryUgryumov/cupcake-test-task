@@ -1,0 +1,26 @@
+.container {
+  width: 90%;
+  margin: 40px auto 0;
+  outline: 2px solid var(--gray-main);
+}
+
+.header,
+.marketsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.header div,
+.marketContainer div {
+  padding: 10px;
+  outline: 1px solid var(--gray-main);
+}
+
+.marketsContainer {
+  outline: 1px solid var(--gray-main);
+}
+
+.marketContainer {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+}
