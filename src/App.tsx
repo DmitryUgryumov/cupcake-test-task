@@ -1,8 +1,8 @@
 // Components
-import Market from './components/Market/Market';
+import Markets from './components/Markets/Markets';
 
 const App = () => {
-  return <Market />;
+  return <Markets />;
 };
 
 export default App;
