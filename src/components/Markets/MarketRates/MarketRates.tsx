@@ -10,18 +10,26 @@ import IMarket from '../../../interfaces/market.interface';
 interface PropsTypes {
   onChangeMarket: (market: IMarket) => void;
   onError: () => void;
-  mainUrl: string;
+  longPollingUrl: string;
   reserveUrl: string;
   minimalRate: number;
   isError: boolean;
   market?: IMarket;
 }
 
-const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, minimalRate, market, isError }: PropsTypes) => {
+const MarketRates = ({
+  onChangeMarket,
+  onError,
+  longPollingUrl,
+  reserveUrl,
+  minimalRate,
+  market,
+  isError,
+}: PropsTypes) => {
   return (
     <MarketLongPolling
       onChangeMarket={onChangeMarket}
-      longPollingUrl={mainUrl}
+      longPollingUrl={longPollingUrl}
       onError={onError}
       baseApiUrl={reserveUrl}
     >

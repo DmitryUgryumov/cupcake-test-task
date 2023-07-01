@@ -49,7 +49,7 @@ const Markets = () => {
           <MarketRates
             onChangeMarket={(market) => setFirstMarket(market)}
             onError={() => setErrorMarkets((prev) => [...prev, 'first'])}
-            mainUrl="/first/poll"
+            longPollingUrl="/first/poll"
             reserveUrl="/first"
             market={firstMarket}
             minimalRate={minimalRate}
@@ -60,7 +60,7 @@ const Markets = () => {
           <MarketRates
             onChangeMarket={(market) => setSecondMarket(market)}
             onError={() => setErrorMarkets((prev) => [...prev, 'second'])}
-            mainUrl="/second/poll"
+            longPollingUrl="/second/poll"
             reserveUrl="/second"
             market={secondMarket}
             minimalRate={minimalRate}
@@ -71,7 +71,7 @@ const Markets = () => {
           <MarketRates
             onChangeMarket={(market) => setThirdMarket(market)}
             onError={() => setErrorMarkets((prev) => [...prev, 'third'])}
-            mainUrl="/third/poll"
+            longPollingUrl="/third/poll"
             reserveUrl="/third"
             market={thirdMarket}
             minimalRate={minimalRate}
