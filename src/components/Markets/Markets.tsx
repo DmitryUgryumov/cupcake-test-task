@@ -4,6 +4,9 @@ import { useMemo, useState } from 'react';
 // Interfaces
 import IMarket from '../../interfaces/market.interface';
 
+// Types
+import { MarketTypes } from '../../types/marketTypes.type';
+
 // Components
 import MarketRates from './MarketRates/MarketRates';
 
@@ -17,6 +20,7 @@ const Markets = () => {
   const [firstMarket, setFirstMarket] = useState<IMarket>();
   const [secondMarket, setSecondMarket] = useState<IMarket>();
   const [thirdMarket, setThirdMarket] = useState<IMarket>();
+  const [errorMarkets, setErrorMarkets] = useState<MarketTypes[]>([]);
 
   const minimalRate = useMemo(
     () => calculateMinimalRate([firstMarket, secondMarket, thirdMarket]),
@@ -44,31 +48,34 @@ const Markets = () => {
         <div className={styles.marketContainer}>
           <MarketRates
             onChangeMarket={(market) => setFirstMarket(market)}
-            onError={() => {}}
+            onError={() => setErrorMarkets((prev) => [...prev, 'first'])}
             mainUrl="/first/poll"
             reserveUrl="/first"
             market={firstMarket}
             minimalRate={minimalRate}
+            isError={errorMarkets.includes('first')}
           />
         </div>
         <div className={styles.marketContainer}>
           <MarketRates
             onChangeMarket={(market) => setSecondMarket(market)}
-            onError={() => {}}
+            onError={() => setErrorMarkets((prev) => [...prev, 'second'])}
             mainUrl="/second/poll"
             reserveUrl="/second"
             market={secondMarket}
             minimalRate={minimalRate}
+            isError={errorMarkets.includes('second')}
           />
         </div>
         <div className={styles.marketContainer}>
           <MarketRates
             onChangeMarket={(market) => setThirdMarket(market)}
-            onError={() => {}}
+            onError={() => setErrorMarkets((prev) => [...prev, 'third'])}
             mainUrl="/third/poll"
             reserveUrl="/third"
             market={thirdMarket}
             minimalRate={minimalRate}
+            isError={errorMarkets.includes('third')}
           />
         </div>
       </div>

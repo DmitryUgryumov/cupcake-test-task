@@ -2,3 +2,17 @@
   background-color: var(--blue-main);
   color: var(--white-main);
 }
+
+.errorRate {
+  position: relative;
+}
+
+.errorRate:after {
+  position: absolute;
+  right: 5px;
+  left: 5px;
+  top: calc(100% + 5px);
+  font-size: 12px;
+  content: 'Не удалось обновить значение';
+  color: var(--main-red);
+}

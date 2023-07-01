@@ -13,10 +13,11 @@ interface PropsTypes {
   mainUrl: string;
   reserveUrl: string;
   minimalRate: number;
+  isError: boolean;
   market?: IMarket;
 }
 
-const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, minimalRate, market }: PropsTypes) => {
+const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, minimalRate, market, isError }: PropsTypes) => {
   return (
     <MarketLongPolling
       onChangeMarket={onChangeMarket}
@@ -29,7 +30,7 @@ const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, minimalRate
       <Rate rate={market ? 1 / market.rates.EUR : null} minimalRate={minimalRate} />
       <Rate rate={market ? market.rates.RUB / market.rates.USD : null} minimalRate={minimalRate} />
       <Rate rate={market ? market.rates.RUB / market.rates.EUR : null} minimalRate={minimalRate} />
-      <Rate rate={market ? market.rates.EUR / market.rates.USD : null} minimalRate={minimalRate} />
+      <Rate rate={market ? market.rates.EUR / market.rates.USD : null} minimalRate={minimalRate} isError={isError} />
     </MarketLongPolling>
   );
 };
