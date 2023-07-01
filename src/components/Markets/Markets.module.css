@@ -1,5 +1,5 @@
 .container {
-  width: 90%;
+  width: 450px;
   margin: 40px auto 0;
   outline: 2px solid var(--gray-main);
 }
@@ -7,7 +7,7 @@
 .header,
 .marketsContainer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
 }
 
 .header div,

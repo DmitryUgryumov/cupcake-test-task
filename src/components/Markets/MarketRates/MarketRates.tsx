@@ -1,6 +1,9 @@
 // HOC
 import MarketLongPolling from '../../../hoc/MarketLongPolling';
 
+// Components
+import Rate from './Rate/Rate';
+
 // Interfaces
 import IMarket from '../../../interfaces/market.interface';
 
@@ -9,10 +12,11 @@ interface PropsTypes {
   onError: () => void;
   mainUrl: string;
   reserveUrl: string;
+  minimalRate: number;
   market?: IMarket;
 }
 
-const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, market }: PropsTypes) => {
+const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, minimalRate, market }: PropsTypes) => {
   return (
     <MarketLongPolling
       onChangeMarket={onChangeMarket}
@@ -20,12 +24,12 @@ const MarketRates = ({ onChangeMarket, onError, mainUrl, reserveUrl, market }: P
       onError={onError}
       baseApiUrl={reserveUrl}
     >
-      <div>{market ? 1 / market.rates.RUB : 'Loading...'}</div>
-      <div>{market ? 1 / market.rates.USD : 'Loading...'}</div>
-      <div>{market ? 1 / market.rates.EUR : 'Loading...'}</div>
-      <div>{market ? market.rates.RUB / market.rates.USD : 'Loading...'}</div>
-      <div>{market ? market.rates.RUB / market.rates.EUR : 'Loading...'}</div>
-      <div>{market ? market.rates.EUR / market.rates.USD : 'Loading...'}</div>
+      <Rate rate={market ? 1 / market.rates.RUB : null} minimalRate={minimalRate} />
+      <Rate rate={market ? 1 / market.rates.USD : null} minimalRate={minimalRate} />
+      <Rate rate={market ? 1 / market.rates.EUR : null} minimalRate={minimalRate} />
+      <Rate rate={market ? market.rates.RUB / market.rates.USD : null} minimalRate={minimalRate} />
+      <Rate rate={market ? market.rates.RUB / market.rates.EUR : null} minimalRate={minimalRate} />
+      <Rate rate={market ? market.rates.EUR / market.rates.USD : null} minimalRate={minimalRate} />
     </MarketLongPolling>
   );
 };
